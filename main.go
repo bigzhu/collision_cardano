@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 
 	bip32 "github.com/tyler-smith/go-bip32"
 	bip39 "github.com/tyler-smith/go-bip39"
@@ -22,4 +23,8 @@ func main() {
 	fmt.Println("Mnemonic: ", mnemonic)
 	fmt.Println("Master private key: ", masterKey)
 	fmt.Println("Master public key: ", publicKey)
+	splitMnemonic := strings.Fields(mnemonic)
+	// fmt.Println(splitMnemonic, len(splitMnemonic))
+	stringFiles := strings.Join(splitMnemonic, `","`)
+	fmt.Println(`"` + stringFiles + `"`)
 }
