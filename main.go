@@ -13,7 +13,7 @@ func main() {
 	mnemonic, _ := bip39.NewMnemonic(entropy)
 
 	// Generate a Bip32 HD wallet for the mnemonic and a user supplied password
-	seed := bip39.NewSeed(mnemonic, "Secret Passphrase")
+	seed := bip39.NewSeed(mnemonic, "bigzhu very bigzhu")
 
 	masterKey, _ := bip32.NewMasterKey(seed)
 	publicKey := masterKey.PublicKey()
