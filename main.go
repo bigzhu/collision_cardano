@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/bigzhu/collision_cardano/conf"
+
 	bip32 "github.com/tyler-smith/go-bip32"
 	bip39 "github.com/tyler-smith/go-bip39"
 )
@@ -14,7 +16,8 @@ func main() {
 	mnemonic, _ := bip39.NewMnemonic(entropy)
 
 	// Generate a Bip32 HD wallet for the mnemonic and a user supplied password
-	seed := bip39.NewSeed(mnemonic, "bigzhu very bigzhu")
+	seedConf := conf.GetSeedConf()
+	seed := bip39.NewSeed(mnemonic, seedConf.Seed)
 
 	masterKey, _ := bip32.NewMasterKey(seed)
 	publicKey := masterKey.PublicKey()
